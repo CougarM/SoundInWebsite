@@ -169,15 +169,13 @@ const links: { key: Exclude<NavKey, null>; label: string; href: string }[] = [
 
   /* Theme toggle */
   .theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
+    position: relative;
+    width: 28px;
+    height: 28px;
     border: none;
     background: none;
     cursor: pointer;
-    color: rgba(231, 223, 217, 0.45);
+    color: rgba(231, 223, 217, 0.6);
     border-radius: 6px;
     flex-shrink: 0;
     transition: color 0.3s ease;
@@ -199,13 +197,20 @@ const links: { key: Exclude<NavKey, null>; label: string; href: string }[] = [
   }
 
   .theme-icon {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.2s ease;
   }
 
-  [data-theme="light"] .theme-sun { display: flex; }
-  [data-theme="dark"] .theme-moon { display: flex; }
+  /* Sun visible by default (light mode is default for inner pages) */
+  .theme-sun { opacity: 1; }
+  .theme-moon { opacity: 0; pointer-events: none; }
+
+  :global([data-theme="dark"]) .theme-sun { opacity: 0; pointer-events: none; }
+  :global([data-theme="dark"]) .theme-moon { opacity: 1; pointer-events: auto; }
 
   @media (max-width: 600px) {
     .nav { padding: 16px 16px; }
@@ -220,6 +225,7 @@ const links: { key: Exclude<NavKey, null>; label: string; href: string }[] = [
     .nav-wordmark { transition: none; }
     .nav-links a { transition: none; }
     .theme-toggle { transition: none; }
+    .theme-icon { transition: none; }
   }
 </style>
 
