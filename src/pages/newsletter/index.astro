@@ -115,7 +115,6 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
 <style>
   .signup-section {
     padding-top: 80px;
-    background: radial-gradient(ellipse 70% 80% at 100% 50%, rgba(144, 75, 144, 0.06) 0%, transparent 60%);
   }
 
   .signup-card {
@@ -131,6 +130,10 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
     align-items: center;
     position: relative;
     overflow: hidden;
+  }
+
+  [data-theme="light"] .signup-card {
+    background: linear-gradient(180deg, rgba(255, 127, 107, 0.04) 0%, rgba(36, 48, 44, 0.03) 100%);
   }
 
   .signup-card::after {
@@ -167,6 +170,14 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
 
   .signup-input::placeholder { color: rgba(231, 223, 217, 0.4); }
 
+  [data-theme="light"] .signup-input {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  [data-theme="light"] .signup-input::placeholder {
+    color: rgba(36, 48, 44, 0.4);
+  }
+
   .signup-input:focus {
     outline: none;
     border-color: var(--color-salmon);
@@ -201,6 +212,11 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
   .archive-item {
     border-bottom: 1px solid transparent;
     border-image: linear-gradient(to right, transparent 0%, rgba(231, 223, 217, 0.12) 10%, rgba(231, 223, 217, 0.12) 90%, transparent 100%) 1;
+  }
+
+  [data-theme="light"] .archive-list,
+  [data-theme="light"] .archive-item {
+    border-image: linear-gradient(to right, transparent 0%, rgba(36, 48, 44, 0.12) 10%, rgba(36, 48, 44, 0.12) 90%, transparent 100%) 1;
   }
 
   .archive-link {
